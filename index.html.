@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  height: 100vh;
+  background: linear-gradient(135deg, #fde2e4, #fadadd);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.card {
+  background: rgba(255,255,255,0.96);
+  padding: 45px;
+  border-radius: 30px;
+  max-width: 550px;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+  animation: fadeIn 1.2s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+h1 {
+  color: #ff4b7d;
+}
+
+p {
+  font-size: 18px;
+  color: #444;
+  line-height: 1.8;
+}
+
+button {
+  margin-top: 30px;
+  padding: 15px 34px;
+  border-radius: 30px;
+  border: none;
+  background: #ff4b7d;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(255,75,125,0.45);
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.06);
+}
+
+.emoji {
+  position: fixed;
+  font-size: 28px;
+  animation: floatUp 3.5s linear forwards;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-120vh); opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.glow {
+  animation: glow 4s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 20px rgba(255,75,125,0.25); }
+  50% { box-shadow: 0 0 45px rgba(255,75,125,0.45); }
+  100% { box-shadow: 0 0 20px rgba(255,75,125,0.25); }
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4f89d8c7b2.mp3" type="audio/mpeg">
+</audio>
+
+<!-- SCREEN 1 -->
+<div class="card glow" id="screen1">
+  <h1>Hey there 💕</h1>
+  <p>
+    I made something from my heart for you.<br>
+    Take a moment… and click below 🌸
+  </p>
+  <button onclick="goToSecond()">Click here 💗</button>
+</div>
+
+<!-- SCREEN 2 -->
+<div class="card hidden glow" id="screen2">
+  <h1>Happy 4th Anniversary 💐❤️</h1>
+  <p>
+    Four years together…<br>
+    And still choosing each other 😚🎉
+  </p>
+  <button onclick="goToThird()">Read my heart 💌</button>
+</div>
+
+<!-- SCREEN 3 -->
+<div class="card hidden glow" id="screen3">
+  <h1>My Love ❤️</h1>
+  <p style="text-align:left; font-size:17px;">
+    HAPPYYYYYYYYYYYYYYYYYYYYY 4TH ANNIVERSARYYYYYYYYYY 💐😚❤️😚❤️😚❤️😚❤️😚❤️😚❤️😚❤️😚❤️😚❤️😚❤️<br><br>
+
+    Thu thuu thuu 🧿🧿🧿🧿🧿🧿🧿🧿<br><br>
+
+    4 years in this relationship with you 😭❤️ me toh veryyy veryyy happyy 🥲❤️<br><br>
+
+    Mere khayal se itna problem hua hum log ke bich ki kabhi kabhi lagta tha ki shayad hum log ka aage nahi chalega…
+    but you never gave up on me 🙂❤️ and I am so grateful for that 🥲❤️<br><br>
+
+    Agar tum mujhe wo uncountable chances nahi dete, toh aaj hum yahan nahi hote ❤️ thank you so much my love 🥲❤️<br><br>
+
+    Bestie, sach mein bol rahe hain — hum bahut happy aur satisfied hain tumhare saath 😌❤️
+    hum apne faults thik karenge, aur hum kar rahe hain… pehle se kam hua hai, aur aage aur kam hoga ❤️<br><br>
+
+    Babeeee 😫❤️ 4 years together soch ke hi rona aa raha hai 😭❤️🫶<br><br>
+
+    Ye sirf 4 years hai… aage 5, 6, 7… phir 10 years bhi honge 🥲❤️🫶
+    hum sab decide karenge future ka, exam ke baad ❤️<br><br>
+
+    Once again babyyy — HAPPYYYY 4TH ANNIVERSARYYYYY MY LOVEEE 😭❤️🫶<br>
+    I LOVEEE YOUUU 😘❤️<br><br>
+
+    We will build a wonderful future together for sure ❤️🫂<br><br>
+
+    Thuuu thuu thuuu 🧿🧿🧿🧿🧿🧿<br><br>
+
+    I LOVEEE YOUUU SOO MUCHHH BABEEE 😭🫶❤️
+  </p>
+</div>
+
+<script>
+function goToSecond() {
+  document.getElementById("screen1").classList.add("hidden");
+  document.getElementById("screen2").classList.remove("hidden");
+  document.getElementById("bgMusic").play();
+  burstEmojis();
+}
+
+function goToThird() {
+  document.getElementById("screen2").classList.add("hidden");
+  document.getElementById("screen3").classList.remove("hidden");
+}
+
+function burstEmojis() {
+  const emojis = ["💖","😚","🎉","💐","❤️","🫶"];
+  for (let i = 0; i < 30; i++) {
+    const e = document.createElement("div");
+    e.className = "emoji";
+    e.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+    e.style.left = Math.random() * 100 + "vw";
+    e.style.bottom = "0px";
+    document.body.appendChild(e);
+    setTimeout(() => e.remove(), 3500);
+  }
+}
+</script>
+
+</body>
+</html>
