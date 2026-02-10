@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You 😘</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Georgia", "Segoe UI", serif;
+  height: 100vh;
+  background: linear-gradient(135deg, #fde2e4, #fbc2eb);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Card */
+.card {
+  background: rgba(255,255,255,0.97);
+  padding: 50px;
+  border-radius: 32px;
+  max-width: 580px;
+  text-align: center;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.28);
+  animation: fadeIn 1.2s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+h1 {
+  color: #ff3366;
+  font-size: 34px;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 19px;
+  color: #444;
+  line-height: 1.9;
+}
+
+button {
+  margin-top: 30px;
+  padding: 16px 36px;
+  border-radius: 35px;
+  border: none;
+  background: linear-gradient(135deg, #ff4b7d, #ff7eb3);
+  color: white;
+  font-size: 19px;
+  cursor: pointer;
+  box-shadow: 0 14px 35px rgba(255,75,125,0.5);
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.07);
+}
+
+/* Anniversary POP animation */
+.pop {
+  animation: popIn 0.9s ease;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.6); opacity: 0; }
+  60% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Falling emojis */
+.fall {
+  position: fixed;
+  top: -40px;
+  font-size: 30px;
+  animation: fallDown linear forwards;
+}
+
+@keyframes fallDown {
+  to {
+    transform: translateY(120vh);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4f89d8c7b2.mp3" type="audio/mpeg">
+</audio>
+
+<!-- SCREEN 1 -->
+<div class="card" id="screen1">
+  <h1>Hey there 💕</h1>
+  <p>
+    I made something special for you.<br>
+    Something from my heart 🌸
+  </p>
+  <button onclick="goToSecond()">Click here 💗</button>
+</div>
+
+<!-- SCREEN 2 -->
+<div class="card hidden pop" id="screen2">
+  <h1 style="font-size:40px;">Happy 4th Anniversary 💐❤️</h1>
+  <p>
+    Four beautiful years together 😭🫶<br>
+    Still choosing each other, every single day 💖<br>
+    And still falling for you… again and again 😚
+  </p>
+  <button onclick="goToThird()">Read my heart 💌</button>
+</div>
+
+<!-- SCREEN 3 -->
+<div class="card hidden" id="screen3">
+  <h1>My World 😭🫶❤️</h1>
+  <p style="text-align:left; font-size:18px;">
+    <!-- YOUR MESSAGE (unchanged) -->
+    HAPPYYYYYYYYYYYYYYYYYYYYY 4TH ANNIVERSARYYYYYYYYYY 💐😚❤️😚❤️😚❤️😚❤️😚❤️😚❤️😚❤️😚❤️😚❤️😚❤️<br><br>
+
+    Thu thuu thuu 🧿🧿🧿🧿🧿🧿🧿🧿<br><br>
+
+    4 years in this relationship with you 😭❤️ me toh veryyy veryyy happyy 🥲❤️<br><br>
+
+    Mere khayal se itna problem hua hum log ke bich… but you never gave up on me 🙂❤️<br><br>
+
+    Thank you so much my love 🥲❤️<br><br>
+
+    Bestie, sach mein hum bahut happy aur satisfied hain tumhare saath 😌❤️<br><br>
+
+    Babeeee 😫❤️ 4 years together soch ke hi rona aa raha hai 😭❤️🫶<br><br>
+
+    Once again babyyy — HAPPYYYY 4TH ANNIVERSARYYYYY MY LOVEEE 😭❤️🫶<br><br>
+
+    I LOVEEE YOUUU SOO MUCHHH BABEEE 😭🫶❤️
+  </p>
+</div>
+
+<script>
+function goToSecond() {
+  document.getElementById("screen1").classList.add("hidden");
+  document.getElementById("screen2").classList.remove("hidden");
+  document.getElementById("bgMusic").play();
+  rainEmojis();
+}
+
+function goToThird() {
+  document.getElementById("screen2").classList.add("hidden");
+  document.getElementById("screen3").classList.remove("hidden");
+}
+
+function rainEmojis() {
+  const emojis = ["💐","😚","❤️","🫶","🌸"];
+  for (let i = 0; i < 35; i++) {
+    const e = document.createElement("div");
+    e.className = "fall";
+    e.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+    e.style.left = Math.random() * 100 + "vw";
+    e.style.animationDuration = (3 + Math.random() * 2) + "s";
+    document.body.appendChild(e);
+    setTimeout(() => e.remove(), 5000);
+  }
+}
+</script>
+
+</body>
+  </html>
